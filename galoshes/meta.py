@@ -60,7 +60,7 @@ class AMMetaClass(type):
             warnings.simplefilter('ignore')
             for key in obj.initMap.keys():
                 if (key not in systemConfig) and obj.initMap[key][0]:
-                    raise ValueError('Class %s requires parameter \'%s\''%(cls.__name__, key))
+                    raise ValueError('Class {0!s} requires parameter \'{1!s}\''.format(cls.__name__, key))
                 if key in systemConfig:
                     if obj.initMap[key][2] is None:
                         typer = lambda x: x
@@ -192,7 +192,7 @@ class SCFilter(object):
 
         for key in self.required:
             if key not in systemConfig:
-                raise ValueError('%s requires parameter \'%s\''%(cls.__name__, key))
+                raise ValueError('{0!s} requires parameter \'{1!s}\''.format(cls.__name__, key))
 
         return {key: systemConfig[key] for key in set.union(self.required, self.optional) if key in systemConfig}
 

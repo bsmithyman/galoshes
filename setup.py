@@ -1,8 +1,8 @@
 '''Galoshes
 '''
 
-import os
 from distutils.core import setup
+import numpy as np
 from setuptools import find_packages
 
 CLASSIFIERS = [

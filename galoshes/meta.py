@@ -4,10 +4,19 @@ Low-level programming constructs for key-value stores
 Originally developed as part of Zephyr
 https://zephyr.space/
 '''
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import division
+from __future__ import absolute_import
+from builtins import super
+from future import standard_library
+standard_library.install_aliases()
+from builtins import object
 
 import warnings
 import numpy as np
 from functools import reduce
+from future.utils import with_metaclass
 
 
 class ClassProperty(property):
@@ -59,7 +68,7 @@ class AMMetaClass(type):
 
         with warnings.catch_warnings():
             warnings.simplefilter('ignore')
-            for key in obj.initMap.keys():
+            for key in obj.initMap:
                 if (key not in systemConfig) and obj.initMap[key][0]:
                     raise ValueError('Class {0!s} requires parameter \'{1!s}\''.format(cls.__name__, key))
                 if key in systemConfig:
@@ -85,7 +94,7 @@ class AMMetaClass(type):
         return obj
 
 
-class AttributeMapper(object):
+class AttributeMapper(with_metaclass(AMMetaClass, object)):
     '''
     An AttributeMapper subclass defines a dictionary initMap, which
     includes keys for mappable inputs expected from the systemConfig
@@ -124,8 +133,6 @@ class AttributeMapper(object):
     the value is kept and the imaginary part is discarded when they are
     typecast to a float.
     '''
-
-    __metaclass__ = AMMetaClass
 
     def __init__(self, systemConfig):
         '''

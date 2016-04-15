@@ -1,1 +1,2 @@
+future
 numpy >= 1.7

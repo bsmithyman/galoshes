@@ -7,6 +7,7 @@ https://zephyr.space/
 
 import warnings
 import numpy as np
+from functools import reduce
 
 
 class ClassProperty(property):
@@ -63,7 +64,8 @@ class AMMetaClass(type):
                     raise ValueError('Class {0!s} requires parameter \'{1!s}\''.format(cls.__name__, key))
                 if key in systemConfig:
                     if obj.initMap[key][2] is None:
-                        typer = lambda x: x
+                        def typer (x):
+                            return x
                     else:
                         def typer(x):
                             newtype = obj.initMap[key][2]

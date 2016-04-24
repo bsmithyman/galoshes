@@ -2,7 +2,6 @@
 '''
 
 from distutils.core import setup
-import numpy as np
 from setuptools import find_packages
 
 CLASSIFIERS = [
@@ -31,7 +30,7 @@ with open('README.md') as fp:
 
 setup(
     name = 'galoshes',
-    version = '0.2.0',
+    version = '0.2.1',
     packages = find_packages(),
     install_requires = ['numpy>=1.7',
                        ],

@@ -30,7 +30,7 @@ with open('README.md') as fp:
 
 setup(
     name = 'galoshes',
-    version = '0.2.2',
+    version = '0.2.3',
     packages = find_packages(),
     install_requires = ['numpy>=1.7',
                         'future',
